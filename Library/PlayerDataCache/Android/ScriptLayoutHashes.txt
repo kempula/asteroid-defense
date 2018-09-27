@@ -1,6 +1,6 @@
 Android
 PlayerPath?
-/Users/janinakoskela/Documents/projektit/AsteroidDefense.apk
+/Users/janinakoskela/Documents/projektit/Asteroid_Defense/AsteroidDefense.apk
 SceneListBegin?
 Assets/Scenes/SampleScene.unity
 SceneListEnd?

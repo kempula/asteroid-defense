@@ -1,0 +1,4 @@
+#Fri Sep 28 00:23:34 EEST 2018
+base.0=/Users/janinakoskela/Documents/projektit/Asteroid_Defense/Temp/gradleOut/build/intermediates/transforms/dex/release/0
+path.0=classes.dex
+renamed.0=classes.dex
