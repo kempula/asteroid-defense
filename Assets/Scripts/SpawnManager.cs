@@ -77,10 +77,13 @@ public class SpawnManager : MonoBehaviour {
 
             if(touch.phase == TouchPhase.Ended) {
                 endPos = touchPosition;
-                direction = startPos - endPos;
-                direction.Normalize();
-                Debug.Log(direction);
-                Spawn(startPos.x, startPos.y, direction);
+
+                if(startPos != endPos) {
+                    direction = startPos - endPos;
+                    direction.Normalize();
+                    Debug.Log(direction);
+                    Spawn(startPos.x, startPos.y, direction);
+                }
             }
         }
     }
