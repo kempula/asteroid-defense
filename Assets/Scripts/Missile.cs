@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Missile : MonoBehaviour {
 
@@ -9,6 +7,7 @@ public class Missile : MonoBehaviour {
 
     public float missileSpeed = 5f;
     private Vector3 velocity = Vector3.zero;
+
 	// Use this for initialization
 	void Start () {
         rb = gameObject.GetComponent<Rigidbody2D>();

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class HomingMissile : MonoBehaviour {
 
@@ -9,7 +7,7 @@ public class HomingMissile : MonoBehaviour {
     public Transform target;
     public Rigidbody2D rb;
     public float speed = 5;
-    public float rotateSpeed = 200f;
+    public float rotateSpeed = 300f;
 
 	// Use this for initialization
 	void Start () {

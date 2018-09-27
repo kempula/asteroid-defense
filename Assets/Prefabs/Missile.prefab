@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 50161473575542282}
   missile: {fileID: 1059156448517436}
-  missileSpeed: 2
+  missileSpeed: 3
 --- !u!212 &212102989272454924
 SpriteRenderer:
   m_ObjectHideFlags: 1

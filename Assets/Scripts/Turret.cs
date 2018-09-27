@@ -1,29 +1,15 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Turret : MonoBehaviour {
 
     public float missileSpeed = 5f;
-    [SerializeField]
-    public GameObject missile;
-    public GameObject homingMissile;
+    public GameObject missileGO;
+    public GameObject homingMissileGO;
 
-    public float trajectoryLenght = 50f;
+    public float trajectoryLength = 50f;
     bool isUsingHomingMissile;
 
-	// Use this for initialization
-	void Start () {
-
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
-    public void OnAsteroidSpawned(Vector3 asteroidPosition, Vector3 asteroidVelocity, Rigidbody2D rb, Transform target) {
+    public void OnAsteroidSpawned(Vector3 asteroidPosition, Vector3 asteroidVelocity, Transform target) {
         if(TrajectoryWithinSafetyZone(asteroidPosition, asteroidVelocity)) {
 
             if(isUsingHomingMissile) {
@@ -32,7 +18,14 @@ public class Turret : MonoBehaviour {
             }
 
             Vector3 velocity = CalculateMissileVelocity(asteroidPosition, asteroidVelocity);
-            Shoot(velocity);
+
+            //Okay, about the next rotation thingy I'm not so sure of, but it works... :D
+            var relativePos = target.position - transform.position;
+            var angle = Mathf.Atan2(relativePos.y, relativePos.x) * Mathf.Rad2Deg;
+            angle = angle - 90f;
+            var rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+            ShootStandardMissile(velocity, rotation);
         }
     }
 
@@ -40,21 +33,21 @@ public class Turret : MonoBehaviour {
         return FirstOrderIntercept(transform.position, Vector3.zero, missileSpeed, asteroidPosition, asteroidVelocity);
     }
 
-    private void Shoot(Vector3 velocity) {
-        GameObject go = (GameObject)Instantiate(missile, transform.position, Quaternion.identity);
-        Missile missileScript = go.GetComponent<Missile>();
-        missileScript.SetVelocity(velocity);
+    private void ShootStandardMissile(Vector3 velocity, Quaternion rotation) {;
+        GameObject go = (GameObject)Instantiate(missileGO, transform.position, rotation);
+        Missile missile = go.GetComponent<Missile>();
+        missile.SetVelocity(velocity);
     }
 
     void ShootHomingMissile(Transform target) {
-        GameObject go = (GameObject)Instantiate(homingMissile, transform.position, Quaternion.identity);
-        HomingMissile missileScript = go.GetComponent<HomingMissile>();
-        missileScript.SetTarget(target);
+        GameObject go = (GameObject)Instantiate(homingMissileGO, transform.position, Quaternion.identity);
+        HomingMissile homingMissile = go.GetComponent<HomingMissile>();
+        homingMissile.SetTarget(target);
     }
 
     private bool TrajectoryWithinSafetyZone(Vector3 asteroidPosition, Vector3 asteroidVelocity) {
         int layerMask = LayerMask.GetMask("Raycast");
-        if(Physics2D.Raycast(asteroidPosition, asteroidVelocity, trajectoryLenght, layerMask)) {
+        if(Physics2D.Raycast(asteroidPosition, asteroidVelocity, trajectoryLength, layerMask)) {
             return true;
         }
 
@@ -69,6 +62,7 @@ public class Turret : MonoBehaviour {
         isUsingHomingMissile = true;
     }
 
+    //http://wiki.unity3d.com/index.php/Calculating_Lead_For_Projectiles
     //first-order intercept using absolute target position
     public static Vector3 FirstOrderIntercept(
         Vector3 shooterPosition,

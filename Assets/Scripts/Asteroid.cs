@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Asteroid : MonoBehaviour {
 
@@ -22,8 +19,16 @@ public class Asteroid : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        //TODO: DELETE ASTEROID WHEN OF SCREEN
-	}
+
+        Vector2 screenPosition = Camera.main.WorldToScreenPoint(transform.position);
+        if (screenPosition.y > Screen.height || screenPosition.y < 0) {
+            Destroy(gameObject);
+        }
+
+        if(screenPosition.x > Screen.width || screenPosition.x < 0) {
+            Destroy(gameObject);
+        }
+    }
 
     private void FixedUpdate() {
         rb.velocity = velocity;
@@ -39,12 +44,14 @@ public class Asteroid : MonoBehaviour {
 
     public void SetVelocity(Vector3 vector3) {
         velocity = vector3 * asteroidSpeed;
-        turretGameObject = GameObject.FindGameObjectWithTag("turret");
+    }
+
+    public void OnAsteroidSpawned() {
+        turretGameObject = GameObject.FindGameObjectWithTag("Turret");
         turret = turretGameObject.GetComponent<Turret>();
         Vector3 asteroidPosition = asteroid.transform.position;
         Vector3 asteroidVelocity = velocity;
-        turret.OnAsteroidSpawned(asteroidPosition, asteroidVelocity, rb, transform);
+        turret.OnAsteroidSpawned(asteroidPosition, asteroidVelocity, transform);
     }
-
-
+   
 }

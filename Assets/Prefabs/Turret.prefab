@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114164540829271954}
   m_Layer: 2
   m_Name: Turret
-  m_TagString: turret
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52,11 +52,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2af01a0a3f6ed4b2fbda50ef38a17b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  missileSpeed: 2
+  missileSpeed: 3
   missile: {fileID: 1059156448517436, guid: ba925fa14561c4c1484b6a1f8cd05783, type: 2}
   homingMissile: {fileID: 1146372704924522, guid: a75a5b8e2e999415c813e125fd79fabd,
     type: 2}
-  trajectoryLenght: 50
+  trajectoryLength: 50
 --- !u!212 &212373397343584058
 SpriteRenderer:
   m_ObjectHideFlags: 1

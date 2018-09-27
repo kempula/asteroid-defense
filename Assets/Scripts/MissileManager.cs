@@ -1,13 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MissileManager : MonoBehaviour
 {
 
     public void ChangeMissile()
     {
-        GameObject p = GameObject.FindGameObjectWithTag("turret");
+        GameObject p = GameObject.FindGameObjectWithTag("Turret");
         p.GetComponent<Turret>().ChangeMissile();
     }
 }

@@ -4,8 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - turret
   - Missile
+  - Turret
   layers:
   - Default
   - TransparentFX
