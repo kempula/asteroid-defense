@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Fri Sep 28 00:23:35 EEST 2018
+#Fri Sep 28 00:34:00 EEST 2018
 60.set=ASSET
 52.set=ASSET
 53.base=/Users/janinakoskela/Documents/projektit/Asteroid_Defense/Temp/gradleOut/build/intermediates/assets/release
