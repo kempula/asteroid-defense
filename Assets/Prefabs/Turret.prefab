@@ -53,8 +53,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   missileSpeed: 3
-  missile: {fileID: 1059156448517436, guid: ba925fa14561c4c1484b6a1f8cd05783, type: 2}
-  homingMissile: {fileID: 1146372704924522, guid: a75a5b8e2e999415c813e125fd79fabd,
+  missileGO: {fileID: 1059156448517436, guid: ba925fa14561c4c1484b6a1f8cd05783, type: 2}
+  homingMissileGO: {fileID: 1146372704924522, guid: a75a5b8e2e999415c813e125fd79fabd,
     type: 2}
   trajectoryLength: 50
 --- !u!212 &212373397343584058
